@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Activity 2 - Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="bg-calc no-select">
+      <div id="result-box">
+        <input type="text" id="result" class="no-select" readonly />
+      </div>
+      <div class="main-container" id="calc">
+        <section class="grid">
+          <button type="button" id="1" onclick="addNum(1)">1</button>
+          <button type="button" id="2" onclick="addNum(2)">2</button>
+          <button type="button" id="3" onclick="addNum(3)">3</button>
+          <button type="button" id="4" onclick="addNum(4)">4</button>
+          <button type="button" id="5" onclick="addNum(5)">5</button>
+          <button type="button" id="6" onclick="addNum(6)">6</button>
+          <button type="button" id="7" onclick="addNum(7)">7</button>
+          <button type="button" id="8" onclick="addNum(8)">8</button>
+          <button type="button" id="9" onclick="addNum(9)">9</button>
+          <button type="button" id="9" onclick="toggleNegative()">+/-</button>
+          <button type="button" id="0" onclick="addNum(0)" name="first">
+            0
+          </button>
+          <button
+            type="button"
+            class="operators"
+            id="decimal"
+            onclick="addDecimal()"
+          >
+            .
+          </button>
+        </section>
+        <section class="grid">
+          <button
+            type="button"
+            class="operators"
+            id="plus"
+            onclick="addOperator('+')"
+          >
+            +
+          </button>
+          <button
+            type="button"
+            class="operators"
+            id="minus"
+            onclick="addOperator('-')"
+          >
+            -
+          </button>
+          <button
+            type="button"
+            class="operators"
+            id="multiply"
+            onclick="addOperator('x')"
+          >
+            x
+          </button>
+          <button
+            type="button"
+            class="operators"
+            id="divide"
+            onclick="addOperator('÷')"
+          >
+            ÷
+          </button>
+          <button
+            type="button"
+            class="operators"
+            id="modulus"
+            onclick="addOperator('%')"
+          >
+            %
+          </button>
+          <button
+            type="button"
+            class="operators"
+            id="expo"
+            onclick="addOperator('²')"
+          >
+            n²
+          </button>
+          <button
+            type="button"
+            id="equals"
+            class="operators"
+            onclick="calculate()"
+          >
+            =
+          </button>
+          <button type="button" id="delete" onclick="del()">DEL</button>
+          <button type="button" id="clear" onclick="clr()">CLR</button>
+        </section>
+      </div>
+    </div>
+  </body>
+  <script defer src="script.js"></script>
+</html>

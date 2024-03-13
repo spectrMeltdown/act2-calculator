@@ -1,0 +1,87 @@
+* {
+  border-radius: 15px;
+}
+
+button {
+  padding: 1rem;
+  font-size: 1.3rem;
+  transition: all 600ms;
+}
+
+.operators {
+  font-size: 2rem;
+}
+
+button:active {
+  background-color: rgb(94, 170, 247);
+  color: whitesmoke;
+  transition: all 100ms;
+}
+
+#equals {
+  background-color: lightgreen;
+  transition: all 600ms;
+}
+
+#equals:active {
+  background-color: forestgreen;
+  color: whitesmoke;
+  transition: all 100ms;
+}
+
+.grid {
+  display: grid;
+  width: 300px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.main-container {
+  display: flex;
+  gap: 1rem;
+}
+
+#result-box {
+  width: 95%;
+  height: 3rem;
+  padding: 10px 5px;
+  margin: 10px auto;
+  border: 2px solid black;
+  background-color: whitesmoke;
+  overflow: hidden;
+  scrollbar-width: thin;
+}
+
+#result,
+#result:focus {
+  font-size: 2rem;
+  border: none;
+  background-color: whitesmoke;
+  outline: none;
+  cursor: default;
+  width: 100%;
+}
+
+.bg-calc {
+  display: inline-block;
+  background-color: slategray;
+  padding: 20px;
+  border: 2px solid black;
+}
+
+body {
+  display: flex;
+  padding-top: 15vh;
+  justify-content: center;
+  align-items: center;
+}
+
+#delete {
+  background-color: rgb(255, 0, 0);
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
