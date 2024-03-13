@@ -13,13 +13,13 @@ CONSTRAINTS:
 - cannot have decimal and operator only
 */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
-    document.querySelector("#result").focus();
-  },
-  false
-);
+// document.addEventListener(
+//   "DOMContentLoaded",
+//   function () {
+//     document.querySelector("#result").focus();
+//   },
+//   false
+// );
 
 let firstNum = "",
   secondNum = "",

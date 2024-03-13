@@ -13,7 +13,7 @@ button {
 }
 
 button:active {
-  background-color: rgb(94, 170, 247);
+  background-color: rgb(76, 157, 238);
   color: whitesmoke;
   transition: all 100ms;
 }
@@ -62,7 +62,7 @@ button:active {
   width: 100%;
 }
 
-.bg-calc {
+#bg-calc {
   display: inline-block;
   background-color: slategray;
   padding: 20px;
@@ -77,11 +77,28 @@ body {
 }
 
 #delete {
+  background-color: rgb(251, 100, 100);
+  transition: all 600ms;
+}
+
+#delete:active {
   background-color: rgb(255, 0, 0);
+  color: whitesmoke;
+  transition: all 100ms;
+}
+
+.numbers {
+  font-weight: bold;
 }
 
 .no-select {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+@media only screen and (max-width: 600px) {
+  #bg-calc {
+    transform: scale(0.7);
+  }
 }
