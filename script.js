@@ -41,10 +41,49 @@ function toggleNegative() {
   if (reset) {
     clr();
   }
+  let oldText = document.querySelector("#result").value;
   if (operator === "") {
-    firstNumNegative = !firstNumNegative;
+    if (firstNumNegative == true) {
+      let newText = oldText.replace("-", "");
+      document.querySelector("#result").value = newText;
+      firstNumNegative = false;
+    } else {
+      document.querySelector("#result").value = `-${oldText}`;
+      firstNumNegative = true;
+    }
   } else {
-    secondNumNegative = !secondNumNegative;
+    let operatorPos = oldText.indexOf(operator);
+    if (secondNumNegative == true) {
+      // remove the negative symbol for the second number
+      let secondNumText = oldText.substring(operatorPos, -1);
+      console.log(`second num text = ${secondNumText}`);
+      let finalText = secondNumText.replace("-", "");
+      console.log(`final text = ${finalText}`);
+      document.querySelector("#result").value = `${oldText.substring(
+        0,
+        operatorPos + 1
+      )}${finalText}`;
+      secondNumNegative = false;
+    } else {
+      // check if a number is already given
+      if (
+        oldText.charAt(oldText.length - 1) == operator ||
+        oldText.charAt(oldText.length - 1) == "-"
+      ) {
+        // if no number, just append a "-" symbol
+        console.log(`no number, appending negative symbol`);
+        document.querySelector("#result").value = `${oldText}-`;
+      } else {
+        // if number exists, insert a negative symbol
+        console.log(`number exists. Inserting negative symbol`);
+        let newText = `${oldText.substring(
+          0,
+          operatorPos + 1
+        )}-${oldText.substring(operatorPos, -1)}`;
+        document.querySelector("#result").value = newText;
+      }
+      secondNumNegative = true;
+    }
   }
 }
 
@@ -59,18 +98,18 @@ function addDecimal() {
     if (!firstNum.includes(".")) {
       firstNum += ".";
       document.querySelector("#result").value = `${oldText}.`;
-      console.log("added decimal");
+      // console.log("added decimal");
     } else {
-      console.log("firstNum already has a decimal");
+      console.error("firstNum already has a decimal");
     }
   } else {
     // check if already has decimal
     if (!secondNum.includes(".")) {
       secondNum += ".";
       document.querySelector("#result").value = `${oldText}.`;
-      console.log("added decimal");
+      // console.log("added decimal");
     } else {
-      console.log("secondNum already has a decimal");
+      console.error("secondNum already has a decimal");
     }
   }
 }
@@ -84,12 +123,12 @@ function addNum(num) {
     firstNum += num;
     document.querySelector("#result").value = `${oldText}${num}`;
     scroll();
-    console.log(`firstNum = ${firstNum}`);
+    // console.log(`firstNum = ${firstNum}`);
   } else {
     secondNum += num;
     document.querySelector("#result").value = `${oldText}${num}`;
     scroll();
-    console.log(`secondNum = ${secondNum}`);
+    // console.log(`secondNum = ${secondNum}`);
   }
 }
 
@@ -109,7 +148,7 @@ function addOperator(newOperator) {
       let oldText = document.querySelector("#result").value;
       operator = newOperator;
       document.querySelector("#result").value = `${oldText}${operator}`;
-      console.log(`operator = ${operator}`);
+      // console.log(`operator = ${operator}`);
       scroll();
     } else {
       console.error("Must have number before adding operator");
@@ -128,17 +167,17 @@ function del() {
   if (secondNum != "") {
     sliceLast();
     secondNum = secondNum.slice(0, -1);
-    console.log(`secondNum(sliced) = ${secondNum}`);
+    // console.log(`secondNum(sliced) = ${secondNum}`);
     scroll();
   } else if (operator != "") {
     sliceLast();
     operator = "";
-    console.log(`operator removed!`);
+    // console.log(`operator removed!`);
     scroll();
   } else {
     sliceLast();
     firstNum = firstNum.slice(0, -1);
-    console.log(`firstNum(sliced) = ${firstNum}`);
+    // console.log(`firstNum(sliced) = ${firstNum}`);
     scroll();
   }
 }
@@ -152,10 +191,15 @@ function calculate() {
   if (reset) {
     clr();
   }
-  console.log(operator);
   if (secondNum == "" && operator != "²") {
-    console.log("No second number");
+    console.error("No second number and not exponential");
     return;
+  }
+  if (firstNumNegative == true) {
+    firstNum = -Math.abs(firstNum);
+  }
+  if (secondNumNegative == true) {
+    secondNum = -Math.abs(secondNum);
   }
   switch (operator) {
     case "+":
@@ -170,7 +214,7 @@ function calculate() {
       }`;
       reset = true;
       break;
-    case "x":
+    case "×":
       document.querySelector("#result").value = `${
         parseFloat(firstNum) * parseFloat(secondNum)
       }`;
